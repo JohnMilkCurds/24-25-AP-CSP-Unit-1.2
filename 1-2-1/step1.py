@@ -14,8 +14,9 @@ spot.shapesize(spot_size)
 
 spot.color(spot_color)
 #-----game functions--------
-
-
+def spot_clicked(x, y):
+    print("Hello World!")
+spot.onclick(spot_clicked)
 #-----events----------------
 wn = trtl.Screen()
 wn.mainloop()
