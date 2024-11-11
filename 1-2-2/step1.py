@@ -21,7 +21,7 @@ timer = 5
 counter_interval = 1000
 timer_up = False
 score = 0
-leader_board_name= "a122_leaderboard.txt"
+leaderboard_file_name= "a122_leaderboard.txt"
 player_name= input("What is your name? ")
 # -----initialize the turtles-----
 spot = trtl.Turtle()
