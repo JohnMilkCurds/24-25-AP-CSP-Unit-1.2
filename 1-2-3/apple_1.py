@@ -1,6 +1,6 @@
 #   a123_apple_1.py
 import turtle as trtl
-
+import random as rand
 #-----setup-----
 apple_image = "apple.gif" # Store the file name of your shape
 ground_height= -200
@@ -12,11 +12,15 @@ wn.addshape(apple_image) # Make the screen aware of the new file
 apple = trtl.Turtle()
 apple.penup()
 wn.bgpic("background.gif")
-
-
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 #-----functions-----
 # given a turtle, set that turtle to be shaped by the image file
+def tree(apple):
+  if len(letters) > 0:
+    new_x = rand.randint(-200, 200 )
+    new_y = apple.ycor()
+    new_letter = rand.choice(letters)
 def draw_apple():
   apple.shape(apple_image)
   apple.color("white")
@@ -25,6 +29,8 @@ def draw_apple():
   wn.update()
 def drop_apple():
   apple.goto(apple.xcor(),ground_height)
+  apple.clear()
+  apple.hideturtle()
 
 
 
