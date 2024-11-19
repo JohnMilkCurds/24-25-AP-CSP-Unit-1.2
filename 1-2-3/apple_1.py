@@ -16,26 +16,30 @@ letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
 
 #-----functions-----
 # given a turtle, set that turtle to be shaped by the image file
-def tree(apple):
+def reset_apple():
   if len(letters) > 0:
     new_x = rand.randint(-200, 200 )
     new_y = apple.ycor()
-    new_letter = rand.choice(letters)
-def draw_apple():
+    new_letter = rand.randint(0, len(letters))
+    draw_apple(apple, letters.pop(new_letter))
+def draw_apple(apple, letter):
   apple.shape(apple_image)
   apple.color("white")
-  apple.write("A", font=("Arial", 40, "bold"))
+  apple.write(letter, font=("Arial", 40, "bold"))
   apple.goto(apple_letter_x_offset, apple_letter_y_offset)
+  apple.showturtle()
   wn.update()
 def drop_apple():
   apple.goto(apple.xcor(),ground_height)
   apple.clear()
   apple.hideturtle()
+  reset_apple()
+
 
 
 
 #-----function calls-----
-draw_apple()
-wn.onkeypress(drop_apple, "a")
+draw_apple(apple,letters)
+wn.onkeypress(drop_apple,"a")
 wn.listen()
 wn.mainloop()
