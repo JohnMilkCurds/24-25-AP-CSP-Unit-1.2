@@ -1,43 +1,81 @@
 # Import Statements
 import turtle as trtl
 import random as rand
+from itertools import count
+
 # Variables
-Lock = True
+lock = True
 player_id = [1,2]
-countdown = rand.randint(5,10)
-counter = trtl.Turtle()
+timer = rand.randint(5,10)
+wn=trtl.Screen()
+wn.setup(width=558, height=345)
+counter_display = trtl.Turtle()
 counter_interval = 1000
-countdown_up = False
+font_setup=("Arial", 20, "normal")
+timer_up = False
 player1=trtl.Turtle()
 player2=trtl.Turtle()
+lazer1 = trtl.Turtle()
+lazer2 = trtl.Turtle()
+wn.setup(558,345)
+wn.bgpic("background.gif")
 # Turtle Setup
 player1.speed(0)
 player1.color('red')
 player1.shape('circle')
-player1.shapesize(5)
+player1.shapesize(3.5)
 player1.penup()
-player1.goto(-350,-200)
+player1.goto(-230,-120)
 player2.speed(0)
 player2.color('blue')
 player2.shape('circle')
-player2.shapesize(5)
+player2.shapesize(3.5)
 player2.penup()
-player2.goto(350,-200)
+player2.goto(230,-120)
+lazer1.speed(5)
+lazer1.color('red')
+lazer1.shape('square')
+lazer1.shapesize(.5)
+lazer1.penup()
+lazer1.goto(-230,-120)
+lazer1.pendown()
+lazer2.speed(5)
+lazer2.color('blue')
+lazer2.shape('square')
+lazer2.shapesize(.5)
+lazer2.penup()
+lazer2.goto(230,-120)
+lazer2.pendown()
+
 # Functions
-def timer(countdown):
-    if countdown == 0:
-        counter.write("DRAW")
-        countdown_up = True
+def countdown():
+    global timer, timer_up, lock
+    counter_display.clear()
+    if timer <= 0:
+        counter_display.write("DRAW", font=font_setup)
+        timer_up = True
+        lock = False
     else:
-        countdown -= 1
-        counter.getscreen().ontimer(countdown, counter_interval)
-
+        timer -= 1
+        counter_display.getscreen().ontimer(countdown, counter_interval)
     # Game
+def press_a():
+    if lock == False:
+        lazer1.goto(350,-200)
+        counter_display.clear()
+        counter_display.write("PLAYER ONE WINS", font=font_setup)
+def press_l():
+    if lock == False:
+        lazer1.goto(350,-200)
+        counter_display.clear()
+        counter_display.write("PLAYER TWO WINS", font=font_setup)
 
-wn=trtl.Screen()
-wn.ontimer(timer(countdown), counter_interval)
-wn.bgcolor('cyan')
+wn.ontimer(countdown, counter_interval)
+wn.onkeypress(press_a,"a")
+wn.onkeypress(press_l,"l")
+wn.listen()
 wn.mainloop()
+
 
 '''
 hour = ["1:", "2:", "3:", "4:", "5:", "6:", "7:", "8:", "9:","10:","11:","12:"]
