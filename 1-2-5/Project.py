@@ -100,7 +100,7 @@ def press_l():
         counter_display.write("PLAYER TWO WINS! Press space and try again!", font=font_setup)
 def press_space():
     global timer
-    timer = rand.randint(5, 10)
+    timer = rand.randint(3, 10)
     lazer1.goto(-180,-90)
     lazer2.goto(180,-90)
     lazer1.hideturtle()
