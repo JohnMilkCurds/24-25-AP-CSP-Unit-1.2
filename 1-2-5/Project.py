@@ -14,6 +14,7 @@ timer = rand.randint(3, 10)
 timer_up = False
 wn.setup(558,345)
 wn.bgpic("background.gif")
+
 #turtles
 player1=trtl.Turtle()
 player2=trtl.Turtle()
